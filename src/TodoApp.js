@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import useTodoState from './hooks/useTodoState'
 import { Paper, AppBar, Toolbar, Grid, Typography } from '@mui/material'
 import TodoList from './TodoList'
