@@ -11,13 +11,17 @@ function TodoApp() {
   //   { id: 2, task: 'Wash Truck', completed: true },
   //   { id: 3, task: 'Clean Garage', completed: false }
   // ]
-  const initialTodos = JSON.parse(window.localStorage.getItem('todos') || [])
+
+  //  *** Moved to hook 'useLocalStorageState *** //
+  // const initialTodos = JSON.parse(window.localStorage.getItem('todos') || [])
+  const initialTodos = []
   const { todos, addTodo, removeTodo, toggleTodo, editTodo } =
     useTodoState(initialTodos)
 
-  useEffect(() => {
-    window.localStorage.setItem('todos', JSON.stringify(todos))
-  }, [todos])
+  //  *** Moved to hook 'useLocalStorageState *** //
+  // useEffect(() => {
+  //   window.localStorage.setItem('todos', JSON.stringify(todos))
+  // }, [todos])
 
   return (
     <Paper

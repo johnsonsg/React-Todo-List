@@ -1,8 +1,16 @@
-import { useState } from 'react'
+// import { useState } from 'react'
+import useLocalStorageState from './useLocalStorageState'
 import { v4 as uuid } from 'uuid'
 
 export default initialTodos => {
-  const [todos, setTodos] = useState(initialTodos)
+  // const [todos, setTodos] = useState(initialTodos)
+  /**
+   *  instead of using {useState}, we can use our custom Hook 'useLocalStorage'
+   *  A custom hook inside another custom hook.
+   *  Make sure you pass in a key "key" to initialize it
+   *  So, we want it to be stored under the "key" of "todos"
+   */
+  const [todos, setTodos] = useLocalStorageState('todos', initialTodos)
 
   return {
     todos,
