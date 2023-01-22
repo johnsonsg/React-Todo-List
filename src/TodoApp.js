@@ -21,11 +21,15 @@ function TodoApp() {
     setTodos(updateTodos)
   }
   const toggleTodo = todoId => {
-    // Map through updated todo
     const updatedTodos = todos.map(todo =>
       todo.id === todoId ? { ...todo, completed: !todo.completed } : todo
     )
-    // Call setTodos with updated todos array
+    setTodos(updatedTodos)
+  }
+  const editTodo = (todoId, newTask) => {
+    const updatedTodos = todos.map(todo =>
+      todo.id === todoId ? { ...todo, task: newTask  } : todo
+    )
     setTodos(updatedTodos)
   }
 
@@ -52,6 +56,7 @@ function TodoApp() {
             todos={todos}
             removeTodo={removeTodo}
             toggleTodo={toggleTodo}
+            editTodo={editTodo}
           />
         </Grid>
       </Grid>
