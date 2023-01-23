@@ -4,7 +4,6 @@ import useInputState from './hooks/useInputState'
 import AddIcon from '@mui/icons-material/Add'
 import { BiPlus } from 'react-icons/bi'
 
-
 function TodoForm({ addTodo }) {
   const [value, handleChange, reset] = useInputState('')
   return (

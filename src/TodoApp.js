@@ -15,8 +15,14 @@ function TodoApp() {
   //  *** Moved to hook 'useLocalStorageState *** //
   // const initialTodos = JSON.parse(window.localStorage.getItem('todos') || [])
   const initialTodos = []
-  const { todos, addTodo, removeTodo, toggleTodo, editTodo } =
-    useTodoState(initialTodos)
+  const {
+    todos,
+    addTodo,
+    removeTodo,
+    toggleTodo,
+    editTodo,
+    removeAllDoneTodos
+  } = useTodoState(initialTodos)
 
   //  *** Moved to hook 'useLocalStorageState *** //
   // useEffect(() => {
@@ -49,6 +55,7 @@ function TodoApp() {
             removeTodo={removeTodo}
             toggleTodo={toggleTodo}
             editTodo={editTodo}
+            removeAllDoneTodos={removeAllDoneTodos}
           />
         </Grid>
       </Grid>

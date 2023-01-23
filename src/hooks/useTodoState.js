@@ -8,8 +8,10 @@ export default initialTodos => {
    *  instead of using {useState}, we can use our custom Hook 'useLocalStorage'
    *  A custom hook inside another custom hook.
    *  Make sure you pass in a key "key" to initialize it
-   *  So, we want it to be stored under the "key" of "todos"
+   *  so, we want it to be stored under the key of 'todos'
+   * @params for useLocalStorageState (key, value) = ('todos', initiaTodos)
    */
+
   const [todos, setTodos] = useLocalStorageState('todos', initialTodos)
 
   return {
@@ -34,6 +36,10 @@ export default initialTodos => {
         todo.id === todoId ? { ...todo, task: newTask } : todo
       )
       setTodos(updatedTodos)
+    },
+    removeAllDoneTodos: () => {
+      const filteredItems = todos.filter(todo => todo.completed === false)
+      setTodos(filteredItems)
     }
   }
 }

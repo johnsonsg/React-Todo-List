@@ -8,6 +8,7 @@ import EditTodoForm from './EditTodoForm'
 
 function Todo({ id, task, completed, removeTodo, toggleTodo, editTodo }) {
   const [isEditingTodo, toggleIsEditing] = useToggleState(false)
+
   return (
     <ListItem style={{ height: '64px' }}>
       {isEditingTodo ? (
@@ -37,10 +38,18 @@ function Todo({ id, task, completed, removeTodo, toggleTodo, editTodo }) {
             {task}
           </ListItemText>
           <ListItemSecondaryAction>
-            <IconButton color='primary' aria-label='Edit' onClick={toggleIsEditing}>
+            <IconButton
+              color='primary'
+              aria-label='Edit'
+              onClick={toggleIsEditing}
+            >
               <BiEdit />
             </IconButton>
-            <IconButton style={{color: '#DB3346'}} aria-label='Delete' onClick={() => removeTodo(id)}>
+            <IconButton
+              style={{ color: '#DB3346' }}
+              aria-label='Delete'
+              onClick={() => removeTodo(id)}
+            >
               <BiTrash />
             </IconButton>
           </ListItemSecondaryAction>
