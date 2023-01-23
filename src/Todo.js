@@ -2,8 +2,7 @@ import React from 'react'
 import useToggleState from './hooks/useToggleState'
 import { ListItem, ListItemText, Checkbox } from '@mui/material'
 import IconButton from '@mui/material/IconButton'
-import DeleteIcon from '@mui/icons-material/Delete'
-import EditIcon from '@mui/icons-material/Edit'
+import { BiEdit, BiTrash } from 'react-icons/bi'
 import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction'
 import EditTodoForm from './EditTodoForm'
 
@@ -26,23 +25,23 @@ function Todo({ id, task, completed, removeTodo, toggleTodo, editTodo }) {
             checked={completed}
             onClick={() => toggleTodo(id)}
             style={{
-              color: completed ? '#C21A5A' : '#636465'
+              color: completed ? '#DB3346' : '#636465'
             }}
           />
           <ListItemText
             style={{
               textDecoration: completed ? 'line-through' : 'none',
-              color: completed ? '#C21A5A' : '#636465'
+              color: completed ? '#DB3346' : '#636465'
             }}
           >
             {task}
           </ListItemText>
           <ListItemSecondaryAction>
-            <IconButton aria-label='Edit' onClick={toggleIsEditing}>
-              <EditIcon />
+            <IconButton color='primary' aria-label='Edit' onClick={toggleIsEditing}>
+              <BiEdit />
             </IconButton>
-            <IconButton aria-label='Delete' onClick={() => removeTodo(id)}>
-              <DeleteIcon />
+            <IconButton style={{color: '#DB3346'}} aria-label='Delete' onClick={() => removeTodo(id)}>
+              <BiTrash />
             </IconButton>
           </ListItemSecondaryAction>
         </>
