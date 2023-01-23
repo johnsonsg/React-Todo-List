@@ -29,15 +29,17 @@ function TodoApp() {
         padding: 0,
         margin: 0,
         height: '100vh',
-        backgroundColor: '#fafafa'
+        backgroundColor: '#FAFAFA'
       }}
       elevation={0}
     >
-      <AppBar color='primary' position='static' style={{ height: '64px' }}>
-        <Toolbar>
-          <Typography color='inherit'>TODOS WITH HOOKS</Typography>
-        </Toolbar>
-      </AppBar>
+      {/* <AppBar color='primary' position='static' style={{ height: '64px' }}> */}
+      {/* <Toolbar> */}
+      <Typography color='inherit' variant='h1' textAlign='center'>
+        My Todos
+      </Typography>
+      {/* </Toolbar> */}
+      {/* </AppBar> */}
 
       <Grid container justifyContent='center' style={{ marginTop: '1rem' }}>
         <Grid item xs={11} md={8} lg={4}>

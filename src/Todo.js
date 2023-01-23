@@ -10,7 +10,7 @@ import EditTodoForm from './EditTodoForm'
 function Todo({ id, task, completed, removeTodo, toggleTodo, editTodo }) {
   const [isEditingTodo, toggleIsEditing] = useToggleState(false)
   return (
-    <ListItem style={{ height: '64px'}}>
+    <ListItem style={{ height: '64px' }}>
       {isEditingTodo ? (
         <EditTodoForm
           editTodo={editTodo}
@@ -25,9 +25,15 @@ function Todo({ id, task, completed, removeTodo, toggleTodo, editTodo }) {
             tabIndex={-1}
             checked={completed}
             onClick={() => toggleTodo(id)}
+            style={{
+              color: completed ? '#C21A5A' : '#636465'
+            }}
           />
           <ListItemText
-            style={{ textDecoration: completed ? 'line-through' : 'none' }}
+            style={{
+              textDecoration: completed ? 'line-through' : 'none',
+              color: completed ? '#C21A5A' : '#636465'
+            }}
           >
             {task}
           </ListItemText>

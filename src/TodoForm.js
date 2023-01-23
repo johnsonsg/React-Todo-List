@@ -19,6 +19,7 @@ function TodoForm({ addTodo }) {
           margin='normal'
           label='Add New Todo'
           fullWidth
+          style={{backgroundColor: '#FAFAFA'}}
         />
       </form>
     </div>
