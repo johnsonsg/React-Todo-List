@@ -7,8 +7,7 @@ function TodoList({
   removeTodo,
   toggleTodo,
   editTodo,
-  removeAllDoneTodos,
-  completed
+  removeAllDoneTodos
 }) {
   if (todos.length)
     return (
