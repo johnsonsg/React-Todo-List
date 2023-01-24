@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Box, TextField, IconButton } from '@mui/material'
 import useInputState from './hooks/useInputState'
-import AddIcon from '@mui/icons-material/Add'
 import { BiPlus } from 'react-icons/bi'
+import { TodosContext } from './context/todos.context'
 
-function TodoForm({ addTodo }) {
+function TodoForm() {
   const [value, handleChange, reset] = useInputState('')
+  const {addTodo} = useContext(TodosContext)
   return (
     <Box style={{ margin: '1rem 0', padding: '0' }}>
       <form

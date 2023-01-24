@@ -1,14 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Box, Paper, List, Button, Divider } from '@mui/material'
 import Todo from './Todo'
+import { TodosContext } from './context/todos.context'
 
-function TodoList({
-  todos,
-  removeTodo,
-  toggleTodo,
-  editTodo,
-  removeAllDoneTodos
-}) {
+function TodoList() {
+  const { todos, removeAllDoneTodos } = useContext(TodosContext)
   if (todos.length)
     return (
       <>
@@ -26,23 +22,12 @@ function TodoList({
         </Box>
 
         <Paper>
-          <List>
-            {todos.map((todo, i) => (
-              <>
-                <Todo
-                  // id={todo.id}
-                  // task={todo.task}
-                  // completed={todo.completed}
-                  {...todo} // the three above in spread operator (props)
-                  key={todo.id} // Don't include key in ...Spread
-                  removeTodo={removeTodo}
-                  toggleTodo={toggleTodo}
-                  editTodo={editTodo}
-                />
-                {i < todos.length - 1 && <Divider />}
-              </>
-            ))}
-          </List>
+          {todos.map((todo, i) => (
+            <List key={`Todo List Item ${todos.id}`}>
+              <Todo {...todo} key={todo.id} />
+              {i < todos.length - 1 && <Divider />}
+            </List>
+          ))}
         </Paper>
       </>
     )
