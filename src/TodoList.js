@@ -22,7 +22,7 @@ function TodoList({
           }}
         >
           <Button variant='outlined' type='button' onClick={removeAllDoneTodos}>
-            Delete done Todos
+            Delete Todos
           </Button>
         </Box>
 
