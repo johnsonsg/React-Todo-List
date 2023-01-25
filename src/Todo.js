@@ -8,7 +8,7 @@ import EditTodoForm from './EditTodoForm'
 import { TodosContext } from './context/todos.context'
 
 function Todo({ id, task, completed }) {
-  const { removeTodo, toggleTodo } = useContext(TodosContext)
+  const { dispatch } = useContext(TodosContext)
   const [isEditingTodo, toggleIsEditing] = useToggleState(false)
 
   return (
@@ -18,13 +18,14 @@ function Todo({ id, task, completed }) {
       ) : (
         <>
           <Checkbox
-            // disableRipple
             tabIndex={-1}
             checked={completed}
-            onClick={() => toggleTodo(id)}
+            onClick={() => dispatch({ type: 'TOGGLE_TODO', id: id })}
+            inputProps={{ 'aria-label': 'controlled' }}
             style={{
               color: completed ? '#DB3346' : '#636465'
             }}
+            // disableRipple'
           />
           <ListItemText
             style={{
@@ -45,7 +46,7 @@ function Todo({ id, task, completed }) {
             <IconButton
               style={{ color: '#DB3346' }}
               aria-label='Delete'
-              onClick={() => removeTodo(id)}
+              onClick={() => dispatch({ type: 'REMOVE_TODO', id: id })}
             >
               <BiTrash />
             </IconButton>

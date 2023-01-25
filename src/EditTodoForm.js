@@ -1,16 +1,16 @@
-import React, {useContext} from 'react'
+import React, { useContext } from 'react'
 import useInputState from './hooks/useInputState'
 import { TextField } from '@mui/material'
 import { TodosContext } from './context/todos.context'
 
 function EditTodoForm({ id, task, toggleEditTodo }) {
-  const {editTodo} = useContext(TodosContext)
+  const { dispatch } = useContext(TodosContext)
   const [value, handleChange, reset] = useInputState(task)
   return (
     <form
       onSubmit={e => {
         e.preventDefault()
-        editTodo(id, value)
+        dispatch({ type: 'EDIT_TODO', id: id, newTask: value })
         reset()
         toggleEditTodo()
       }}
@@ -22,7 +22,7 @@ function EditTodoForm({ id, task, toggleEditTodo }) {
         onChange={handleChange}
         fullWidth
         autoFocus
-        variant="standard"
+        variant='standard'
       />
     </form>
   )

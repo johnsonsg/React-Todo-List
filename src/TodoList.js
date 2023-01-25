@@ -4,7 +4,7 @@ import Todo from './Todo'
 import { TodosContext } from './context/todos.context'
 
 function TodoList() {
-  const { todos, removeAllDoneTodos } = useContext(TodosContext)
+  const { todos, dispatch } = useContext(TodosContext)
   if (todos.length)
     return (
       <>
@@ -16,14 +16,19 @@ function TodoList() {
             my: 1
           }}
         >
-          <Button variant='outlined' type='button' onClick={removeAllDoneTodos}>
+          <Button
+            variant='outlined'
+            type='button'
+            onClick={() => dispatch({ type: 'REMOVE_ALL_DONE_TODOS' })}
+            // onClick={removeAllDoneTodos}
+          >
             Delete Todos
           </Button>
         </Box>
 
         <Paper>
           {todos.map((todo, i) => (
-            <List key={`Todo List Item ${todos.id}`}>
+            <List key={`Todo List Item ${todo.task}`}>
               <Todo {...todo} key={todo.id} />
               {i < todos.length - 1 && <Divider />}
             </List>
