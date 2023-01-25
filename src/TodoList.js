@@ -1,10 +1,11 @@
 import React, { useContext } from 'react'
 import { Box, Paper, List, Button, Divider } from '@mui/material'
 import Todo from './Todo'
-import { TodosContext } from './context/todos.context'
+import { TodosContext, DispatchContext } from './context/todos.context'
 
 function TodoList() {
-  const { todos, dispatch } = useContext(TodosContext)
+  const todos = useContext(TodosContext)
+  const dispatch = useContext(DispatchContext)
   if (todos.length)
     return (
       <>
@@ -20,7 +21,6 @@ function TodoList() {
             variant='outlined'
             type='button'
             onClick={() => dispatch({ type: 'REMOVE_ALL_DONE_TODOS' })}
-            // onClick={removeAllDoneTodos}
           >
             Delete Todos
           </Button>

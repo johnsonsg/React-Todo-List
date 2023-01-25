@@ -33,28 +33,3 @@ export default reducer
 // {type: 'TOGGLE_TODO', id: 123}
 // {type: 'EDIT_TODO', ID: 123, newTask: 'walk cat'}
 
-/*
-addTodo: newTodoText => {
-  setTodos([...todos, { id: uuid(), task: newTodoText, completed: false }])
-},
-removeTodo: todoId => {
-  const updateTodos = todos.filter(todo => todo.id !== todoId)
-  setTodos(updateTodos)
-},
-toggleTodo: todoId => {
-  const updatedTodos = todos.map(todo =>
-    todo.id === todoId ? { ...todo, completed: !todo.completed } : todo
-  )
-  setTodos(updatedTodos)
-},
-editTodo: (todoId, newTask) => {
-  const updatedTodos = todos.map(todo =>
-    todo.id === todoId ? { ...todo, task: newTask } : todo
-  )
-  setTodos(updatedTodos)
-},
-removeAllDoneTodos: () => {
-  const filteredItems = todos.filter(todo => todo.completed === false)
-  setTodos(filteredItems)
-}
-*/

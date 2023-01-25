@@ -5,10 +5,10 @@ import IconButton from '@mui/material/IconButton'
 import { BiEdit, BiTrash } from 'react-icons/bi'
 import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction'
 import EditTodoForm from './EditTodoForm'
-import { TodosContext } from './context/todos.context'
+import { DispatchContext } from './context/todos.context'
 
 function Todo({ id, task, completed }) {
-  const { dispatch } = useContext(TodosContext)
+  const dispatch = useContext(DispatchContext)
   const [isEditingTodo, toggleIsEditing] = useToggleState(false)
 
   return (
