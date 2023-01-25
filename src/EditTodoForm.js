@@ -6,7 +6,7 @@ import { DispatchContext } from './context/todos.context'
 function EditTodoForm({ id, task, toggleEditTodo }) {
   const dispatch = useContext(DispatchContext)
   const [value, handleChange, reset] = useInputState(task)
-  console.log('EDIT FORM RENDER')
+
   return (
     <form
       onSubmit={e => {
