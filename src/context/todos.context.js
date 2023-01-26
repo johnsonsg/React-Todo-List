@@ -12,7 +12,7 @@ export function TodosProvider(props) {
     'todos', // first argument is the "key" we are looking for in useLocalStorageReducer
     defaultTodos, // second argument is the "defaultVal"
     todoReducer // third is the "reducer"
-    )
+  )
   return (
     <TodosContext.Provider value={todos}>
       <DispatchContext.Provider value={dispatch}>
