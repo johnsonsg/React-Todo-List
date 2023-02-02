@@ -1,33 +1,31 @@
-import React from 'react'
+import React, { useContext, memo } from 'react'
 import useToggleState from './hooks/useToggleState'
 import { ListItem, ListItemText, Checkbox } from '@mui/material'
 import IconButton from '@mui/material/IconButton'
 import { BiEdit, BiTrash } from 'react-icons/bi'
 import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction'
 import EditTodoForm from './EditTodoForm'
+import { DispatchContext } from './context/todos.context'
 
-function Todo({ id, task, completed, removeTodo, toggleTodo, editTodo }) {
+function Todo({ id, task, completed }) {
+  const dispatch = useContext(DispatchContext)
   const [isEditingTodo, toggleIsEditing] = useToggleState(false)
 
   return (
     <ListItem style={{ height: '64px' }}>
       {isEditingTodo ? (
-        <EditTodoForm
-          editTodo={editTodo}
-          id={id}
-          task={task}
-          toggleEditTodo={toggleIsEditing}
-        />
+        <EditTodoForm id={id} task={task} toggleEditTodo={toggleIsEditing} />
       ) : (
         <>
           <Checkbox
-            // disableRipple
             tabIndex={-1}
             checked={completed}
-            onClick={() => toggleTodo(id)}
+            onClick={() => dispatch({ type: 'TOGGLE_TODO', id: id })}
+            inputProps={{ 'aria-label': 'controlled' }}
             style={{
               color: completed ? '#DB3346' : '#636465'
             }}
+            // disableRipple'
           />
           <ListItemText
             style={{
@@ -48,7 +46,7 @@ function Todo({ id, task, completed, removeTodo, toggleTodo, editTodo }) {
             <IconButton
               style={{ color: '#DB3346' }}
               aria-label='Delete'
-              onClick={() => removeTodo(id)}
+              onClick={() => dispatch({ type: 'REMOVE_TODO', id: id })}
             >
               <BiTrash />
             </IconButton>
@@ -59,4 +57,4 @@ function Todo({ id, task, completed, removeTodo, toggleTodo, editTodo }) {
   )
 }
 
-export default Todo
+export default memo(Todo)

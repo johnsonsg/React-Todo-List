@@ -1,15 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Box, Paper, List, Button, Divider } from '@mui/material'
 import Todo from './Todo'
+import { TodosContext, DispatchContext } from './context/todos.context'
 
-function TodoList({
-  todos,
-  removeTodo,
-  toggleTodo,
-  editTodo,
-  removeAllDoneTodos,
-  completed
-}) {
+function TodoList() {
+  const todos = useContext(TodosContext)
+  const dispatch = useContext(DispatchContext)
   if (todos.length)
     return (
       <>
@@ -21,29 +17,22 @@ function TodoList({
             my: 1
           }}
         >
-          <Button variant='outlined' type='button' onClick={removeAllDoneTodos}>
+          <Button
+            variant='outlined'
+            type='button'
+            onClick={() => dispatch({ type: 'REMOVE_ALL_DONE_TODOS' })}
+          >
             Delete Todos
           </Button>
         </Box>
 
         <Paper>
-          <List>
-            {todos.map((todo, i) => (
-              <>
-                <Todo
-                  // id={todo.id}
-                  // task={todo.task}
-                  // completed={todo.completed}
-                  {...todo} // the three above in spread operator (props)
-                  key={todo.id} // Don't include key in ...Spread
-                  removeTodo={removeTodo}
-                  toggleTodo={toggleTodo}
-                  editTodo={editTodo}
-                />
-                {i < todos.length - 1 && <Divider />}
-              </>
-            ))}
-          </List>
+          {todos.map((todo, i) => (
+            <List key={`Todo List Item ${todo.task}`}>
+              <Todo {...todo} key={todo.id} />
+              {i < todos.length - 1 && <Divider />}
+            </List>
+          ))}
         </Paper>
       </>
     )

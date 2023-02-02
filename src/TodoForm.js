@@ -1,17 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Box, TextField, IconButton } from '@mui/material'
 import useInputState from './hooks/useInputState'
-import AddIcon from '@mui/icons-material/Add'
 import { BiPlus } from 'react-icons/bi'
+import { DispatchContext } from './context/todos.context'
 
-function TodoForm({ addTodo }) {
+function TodoForm() {
   const [value, handleChange, reset] = useInputState('')
+  const dispatch = useContext(DispatchContext)
+
   return (
     <Box style={{ margin: '1rem 0', padding: '0' }}>
       <form
         onSubmit={e => {
           e.preventDefault()
-          addTodo(value)
+          dispatch({ type: 'ADD_TODO', task: value })
           reset()
         }}
       >
