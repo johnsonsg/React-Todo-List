@@ -1,5 +1,7 @@
 import { v4 as uuid } from 'uuid'
-
+/** Note
+ * Adding a reducer now elminates the useTodoState.js hook.
+ */
 const reducer = (state, action) => {
   switch (action.type) {
     case 'ADD_TODO':
@@ -19,7 +21,7 @@ const reducer = (state, action) => {
       )
 
     case 'REMOVE_ALL_DONE_TODOS':
-      return state.filter(todo => todo.completed === false, )
+      return state.filter(todo => todo.completed === false)
 
     default:
       return state
@@ -32,4 +34,3 @@ export default reducer
 // {type: 'REMOVE_TODO', id: 123}
 // {type: 'TOGGLE_TODO', id: 123}
 // {type: 'EDIT_TODO', ID: 123, newTask: 'walk cat'}
-

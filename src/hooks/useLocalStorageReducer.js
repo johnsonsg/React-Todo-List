@@ -1,5 +1,10 @@
 import { useReducer, useEffect } from 'react'
-
+/** NOTE
+ * useLocalStorageReducer.js
+ * What we did was take what we had in useLocalStorageState
+ * and added a reducer
+ * Now, we no longer need useLocalStorageState.js
+ */
 function useLocalStorageReducer(key, defaultVal, reducer) {
   // make piece of state, based off of value in localstorage or default val
   const [state, dispatch] = useReducer(reducer, defaultVal, () => {
